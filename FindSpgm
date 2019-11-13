@@ -1,0 +1,23 @@
+import csv
+with open("p1dataset.txt") as f:
+    reader=csv.reader(f)
+    header=next(reader)
+    examples=list(reader)
+    print(examples)
+    
+h=[['0','0','0','0','0','0']]
+
+for instance in examples:
+    if instance[-1]=='Y':
+        j=0
+        for attr in instance:
+            if attr!="Y":
+                if attr!=h[0][j] and h[0][j]=='0':
+                    h[0][j]=attr
+                elif attr!=h[0][j] and h[0][j]!='0':
+                    h[0][j]='?'
+                else:
+                    pass
+            j+=1
+            
+print(h)            
